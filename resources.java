@@ -2,21 +2,13 @@ import java.util.*;
 public class resources {
     int state;
     int inventory;
-    Queue<Integer> waitlist;
+    LinkedList<pair> waitlist;
 
-    resources(){
-        state = 0;
-        inventory = 0;
-        waitlist = new LinkedList<>();
-    }
-    resources(int s, int inv, Queue<Integer> wl){
+    resources(int s, int inv){
         state = s;
         inventory = inv;
-        waitlist = new LinkedList<>();
+        waitlist = new LinkedList<pair>();
 
-        for(Integer i: wl){
-            waitlist.add(i);
-        }
     }
 
     int getState(){
@@ -27,7 +19,4 @@ public class resources {
         return this.inventory;
     }
 
-    void printWaitList(){
-        System.out.println(waitlist);
-    }
 }
