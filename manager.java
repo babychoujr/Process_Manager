@@ -1,5 +1,4 @@
 import java.util.*;
-import java.util.Iterator;
 public class manager {
     process[] pcb;
     resources[] rcb;
@@ -115,28 +114,17 @@ public class manager {
     Destroy Function
     */
     String destroy(int j){
-        //System.out.printf("In* %d:\n", j);
-        
-        //System.out.println("Children: " + pcb[j].children);
         
         if(j == 0){
             return Integer.toString(-1);
         }
         //If destroy tries to destroy a process that has not been created
-        /*
-        int index_used = 0;
-        System.out.println("IM HEAVEN1");
-        for(int i = 0; i < 16; i++){
-            if(pcb[i].used == 1){
-                index_used += 1;
-            }
-        }
-        */
-        //System.out.println("IM HEAVEN2");
+ 
+ 
         if(pcb[j].used != 1){
             return Integer.toString(-1);
         }
-        //System.out.println("IM HEAVEN3");
+
         int running_process = 0;
         for(int i = ready_list.length - 1; i > -1; i--){
             if(ready_list[i].size() != 0){
@@ -162,7 +150,7 @@ public class manager {
             }
         }
         */
-        //System.out.println("IM HEAVEN");
+
         if(running_process == j){
             LinkedList<Integer> holder = pcb[running_process].children;
             int var = pcb[running_process].children.size();
@@ -171,39 +159,9 @@ public class manager {
             }
         }
         else{
-            //System.out.println("IM HERE");
-            //LinkedList<Integer> h = pcb[j].children;
-            int count = 0;
             while (pcb[j].children != null && pcb[j].children.size()!=0){
-                //System.out.printf("In %d:\n", j); 
-                //System.out.println("A " + pcb[j].children.get(0));
-                //System.out.println("B " + pcb[j].children);
                 destroy(pcb[j].children.get(0)); 
-                if(count == 5){
-                    break;
-                }
-                count++;
             }
-            //if(pcb[j].children.size() == 0){
-                //pcb[j].children.clear();
-            //}
-            //System.out.println("T: " + pcb[j].children.size());
-            
-                /*
-            for(int i = 0; i < pcb[j].children.size(); i++){
-                System.out.println("A " + pcb[j].children.get(0));
-                System.out.println("B " + pcb[j].children);
-                destroy(pcb[j].children.get(0));
-            }
-            */
-            //System.out.println("C " + pcb[j].children);
-            /*
-            for(int i = 0; i < pcb[pcb[j].parent].children.size(); i++){
-                if(pcb[pcb[j].parent].children.get(i) == j){
-                    pcb[pcb[j].parent].children.remove(i);
-                }
-            }
-            */
             
             int index = pcb[pcb[j].parent].children.indexOf(j);
             if(index >= 0){

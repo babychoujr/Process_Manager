@@ -42,7 +42,7 @@ public class shell{
         manager m = new manager();
 
         //Writer to output file
-        FileWriter writer = new FileWriter("test_out.txt");
+        FileWriter writer = new FileWriter("output.txt");
 
         //first in
         int first = 0;
